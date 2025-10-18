@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom";
+import NavLogo from "../../assets/logo.png";
 
 export default function AppNav() {
   return (
     <>
       <div className="img">
         <NavLink to={"/"}>
-          <img src="../../assets/logo.png" alt="logo img" width={"100px"} />
+          <img src={NavLogo} alt="logo img" width={"100px"} />
         </NavLink>
       </div>
       <div className="navBar">

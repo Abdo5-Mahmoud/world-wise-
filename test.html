@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #111;
+      }
+      .container {
+        width: 150px;
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #8af5a3;
+      }
+      .icon {
+        width: 80px;
+        height: 80px;
+        background: #9d9d9d;
+        border-radius: 50%;
+        position: relative;
+        transition: transform 0.1s linear;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" onmouseenter="{handleMouseEnter}">
+      <div class="icon"></div>
+    </div>
+  </body>
+
+  <script>
+    const icon = document.querySelector(".icon");
+    const container = document.querySelector(".container");
+
+    const detectionRange = 150; // the max px the mouse can be far away from the icon
+    const maxOffset = 30; // max px the icon can move
+    const responsiveness = 0.9; // 0..1, lower = smoother (damping)
+
+    let origin = { x: 0, y: 0 };
+    let rafId = null;
+
+    function onEnter(e) {
+      const rect = icon.getBoundingClientRect();
+      origin.x = rect.left + rect.width / 2;
+      origin.y = rect.top + rect.height / 2;
+
+      // start listening mousemove on document so movement keeps working even fast
+      document.addEventListener("mousemove", onMove);
+    }
+
+    function onMove(e) {
+      // calculate distance from fixed origin
+      const dx = e.clientX - origin.x;
+      const dy = e.clientY - origin.y;
+      const distance = Math.hypot(dx, dy);
+
+      if (distance >= detectionRange) {
+        // out of range -> reset
+        cancelAnimationFrame(rafId);
+        icon.style.transform = "translate(0,0)";
+        return;
+      }
+
+      // normalized vector from origin to cursor
+      const nx = dx / (distance || 1);
+      const ny = dy / (distance || 1);
+
+      // intensity 0..1 (closer => larger)
+      const intensity = 1 - distance / detectionRange;
+
+      // desired offset but clamp to maxOffset
+      const desiredX = nx * maxOffset * intensity;
+      const desiredY = ny * maxOffset * intensity;
+
+      // apply via RAF for smoother updates
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        icon.style.transform = `translate(${desiredX * responsiveness}px, ${
+          desiredY * responsiveness
+        }px)`;
+      });
+    }
+
+    function onLeave() {
+      document.removeEventListener("mousemove", onMove);
+      cancelAnimationFrame(rafId);
+      icon.style.transform = "translate(0,0)";
+    }
+
+    container.addEventListener("mouseenter", onEnter);
+    container.addEventListener("mouseleave", onLeave);
+  </script>
+</html>

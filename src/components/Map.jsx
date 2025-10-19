@@ -9,7 +9,7 @@ import {
   useMapEvents,
 } from "react-leaflet";
 import { useNavigate } from "react-router-dom";
-import MarkerImg from "../../assets/marker.png";
+import MarkerImg from "../../public/marker.png";
 import useUriPositon from "../Hooks/useUriPositon.js";
 import { useCitiesContext } from "../Stores/CitiesContext.jsx";
 import PropTypes from "prop-types";
@@ -40,7 +40,7 @@ function ClickMarker({ onClick }) {
       } = e;
       if (typeof onClick === "function") onClick([lat, lng]);
       // console.log(e);
-      
+
       navigate(`form?lat=${lat}&lng=${lng}`);
     },
   });

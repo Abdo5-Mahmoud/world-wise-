@@ -51,7 +51,7 @@ a {
 
   &:hover {
     color: var(--color-brand--2);
-    transform: scale(1.1);
+    transform: scale(.9);
   }
 }
 
@@ -59,11 +59,11 @@ a {
   background-color: var(--color-brand--2);
   color: var(--color-dark--0);
   word-spacing: .2px;
+  border: 2px solid var(--color-brand--2);
 
   &:hover {
     background-color: var(--color-dark--0);
     color: var(--color-brand--2);
-    border: 2px solid var(--color-brand--2);
   }
 
 }
@@ -207,7 +207,7 @@ nav {
   width: 100%;
   font-family: 'Nunito', sans-serif;
   background-image: linear-gradient(rgba(36, 42, 46, 0.8),
-      rgba(36, 42, 46, 0.8)), url('../assets/bg.jpg');
+      rgba(36, 42, 46, 0.8)), url('../public/bg.jpg');
   background-position: center;
   background-size: cover;
 
@@ -388,7 +388,7 @@ nav {
 
       .link {
         &:hover {
-          transform: scale(01);
+          transform: scale(1);
           color: var(--color-light--2);
         }
       }

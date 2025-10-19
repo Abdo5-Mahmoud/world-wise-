@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { faBars, faBarsStaggered } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import NavLogo from "../../assets/logo.png";
+import NavLogo from "../../public/logo.png";
 
 export default function Navbar() {
   const [clicked, setClicked] = useState(false);

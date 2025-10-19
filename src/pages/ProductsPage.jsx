@@ -2,7 +2,7 @@ export default function ProductsPage() {
   return (
     <div className="products">
       <div className="img">
-        <img src="../../dist/img-1.jpg" alt="products-img" />
+        <img src="../../assets/img-1.jpg" alt="products-img" />
       </div>
       <div className="text">
         <h3>About WorldWide</h3>

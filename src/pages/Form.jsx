@@ -35,7 +35,9 @@ export default function Form() {
         });
         // console.log(data);
         setCityName(data.city);
-        setCountry(data.country);
+        setCountry(data.countryName);
+        // console.log(data.country);
+
         setEmoji(convertToEmoji(data.countryCode));
       } catch (err) {
         setGeoError(err);
@@ -43,7 +45,7 @@ export default function Form() {
         setGeoLoading(false);
       }
     }
-    console.log(lat, lng);
+    // console.log(lat, lng);
 
     fetchCityData();
     return () => {

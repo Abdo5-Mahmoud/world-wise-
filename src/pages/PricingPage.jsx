@@ -2,7 +2,7 @@ export default function PricingPage() {
   return (
     <div className="pricing">
       <div className="img">
-        <img src="../../dist/img-2.jpg" alt="pricing-img" />
+        <img src="../../assets/img-2.jpg" alt="pricing-img" />
       </div>
       <div className="text">
         <h3>

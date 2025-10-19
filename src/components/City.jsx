@@ -12,15 +12,14 @@ export default function City() {
 
   useEffect(() => {
     if (!id) return;
-    // console.log(id);
+    // if (currentCity.id == currentCity.id) return;
     getCity(id);
-    // console.log(currentCity);
-    // console.log(isLoading);
-  }, [id, getCity]);
+    console.log(currentCity);
+  }, [id, getCity, currentCity]);
 
   if (isLoading) return <Loader />;
 
-  if (!city) return <div>No City Data</div>;
+  if (!Object.keys(city).length) return <div>No City Data</div>;
 
   return (
     <div className="city">
@@ -30,7 +29,7 @@ export default function City() {
       </div>
       <div className="row">
         <h6>You Went To {city?.cityName} on</h6>
-        <time>{city?.date}</time>
+        <time>{formatDate(city?.date)}</time>
       </div>
       {city?.notes && (
         <div className="row">

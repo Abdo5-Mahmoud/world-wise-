@@ -165,7 +165,9 @@ nav {
   .navbarCont {
     ul {
       display: none;
+
     }
+
 
     .bar {
       display: block;
@@ -176,8 +178,24 @@ nav {
       position: absolute;
       flex-direction: column;
       top: 0px;
-      right: 0;
+      right: 10px;
       transform: translateY(60%);
+      background-color: var(--color-dark--1);
+      border-radius: 10px;
+      transition: .5s;
+
+      &::before {
+        content: '';
+        position: absolute;
+        border-top: 10px solid transparent;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid var(--color-dark--1);
+
+        right: 15px;
+        top: -10px;
+        transform: translateY(-50%);
+      }
     }
   }
 }
@@ -545,6 +563,33 @@ nav {
 
     }
   }
+}
+
+/* ----- */
+.countryList {
+  list-style: none;
+  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .5rem;
+
+  .countryItem {
+    display: inline-block;
+    flex-basis: 50%;
+    background-color: var(--color-dark--2);
+    padding: .6rem;
+    border-radius: 10px;
+    border-left: 5px solid var(--color-brand--1);
+
+    .emoji {
+      font-size: 30px;
+    }
+
+    .countryName {
+      font-size: 15px;
+    }
+  }
+
 }
 
 /* ----- */

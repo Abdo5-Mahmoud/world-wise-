@@ -40,7 +40,7 @@ function ClickMarker({ onClick }) {
       } = e;
       if (typeof onClick === "function") onClick([lat, lng]);
       // console.log(e);
-
+      
       navigate(`form?lat=${lat}&lng=${lng}`);
     },
   });

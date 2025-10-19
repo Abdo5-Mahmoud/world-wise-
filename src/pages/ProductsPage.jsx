@@ -1,8 +1,9 @@
+import ProductImg from "../../public/img-1.jpg";
 export default function ProductsPage() {
   return (
     <div className="products">
       <div className="img">
-        <img src="../../public/img-1.jpg" alt="products-img" />
+        <img src={ProductImg} alt="products-img" />
       </div>
       <div className="text">
         <h3>About WorldWide</h3>

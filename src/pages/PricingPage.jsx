@@ -1,8 +1,9 @@
+import PricingImg from "../../public/img-2.jpg";
 export default function PricingPage() {
   return (
     <div className="pricing">
       <div className="img">
-        <img src="../../public/img-2.jpg" alt="pricing-img" />
+        <img src={PricingImg} alt="pricing-img" />
       </div>
       <div className="text">
         <h3>
